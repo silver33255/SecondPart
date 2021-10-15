@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin page</title>
+</head>
+<body>
+<h1>This is admin page</h1>
+<form action="/logout">
+    <input type="submit" value="Logout"/>
+</form>
+<h2>Усі сеанси</h2>
+<table>
+    <th:block th:each="filmSession : ${filmSessions}">
+        <tr>
+            <td th:text="${filmSession.start}">Film session start:</td>
+            <td th:text="${filmSession.film}">Film session name:</td>
+        </tr>
+    </th:block>
+</table>
+<h2>Додати сеанс</h2>
+<form action="#" th:action="@{/addSesssion}" th:object="${filmSession}" method="post">
+    <p>Початок: <input type="time" id="start" name="start"/></p>
+    <p>Фільм: <input type="text" id="film" name="film"/></p>
+    <p><input type="submit" value="Add"/></p>
+</form>
+</body>
+</html>

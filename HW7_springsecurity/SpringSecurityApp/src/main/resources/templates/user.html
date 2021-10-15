@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinema user page</title>
+</head>
+<body>
+<h1>Welcome to the Cinema site</h1>
+<form action="/logout">
+    <input type="submit" value="Logout"/>
+</form>
+<H3>Доступні сеанси на:
+    <div th:text="${#dates.format(#dates.createNow(), 'dd MMM')}">Wed Feb 10 13:55:58 IST 2016</div>
+</H3>
+<table>
+    <th:block th:each="filmSession : ${filmSessions}">
+        <tr>
+            <td th:text="${filmSession.start}">Film</td>
+            <td th:text="${filmSession.film}">Films session start:</td>
+        </tr>
+    </th:block>
+</table>
+<h3>Забрюновати сеанс</h3>
+<form action="#" th:action="@{/sessions/booking/}" method="post">
+    <select th:name="bookedSessionId">
+        <th:block th:each="filmSession : ${filmSessions}">
+            <option th:value="${filmSession.id}" th:text="${filmSession.start}" th:name="bookedSessionId"></option>
+        </th:block>
+    </select>
+    <input type="submit" value="Забронювати"/></p>
+</form>
+</body>
+</html>
+</html>

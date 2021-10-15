@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <!--    <includeAll path="v-1.0/" relativeToChangelogFile="true"/>-->
+
+    <changeSet id="create_filmSession_table" author="Ihor Panaskin">
+        <createTable tableName="film_session">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="date" type="date">
+            </column>
+            <column name="start" type="time">
+            </column>
+            <column name="film" type="varchar(255)">
+            </column>
+            <column name="free_seats" type="int" value="35">
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

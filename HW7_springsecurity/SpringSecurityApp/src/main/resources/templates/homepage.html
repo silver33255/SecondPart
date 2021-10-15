@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinema home page</title>
+</head>
+<body>
+<h1>Welcome to the Cinema site</h1>
+</body>
+<a href="/login">Увійти</a>
+<H3>Доступні сеанси на:
+    <div th:text="${#dates.format(#dates.createNow(), 'dd MMM')}">Wed Feb 10 13:55:58 IST 2016</div>
+</H3>
+<table>
+    <th:block th:each="filmSession : ${filmSessions}">
+        <tr>
+            <td th:text="${filmSession.start}">Film</td>
+            <td th:text="${filmSession.film}">Films session start:</td>
+        </tr>
+    </th:block>
+</table>
+</html>
+</html>
